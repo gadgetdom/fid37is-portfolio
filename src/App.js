@@ -6,6 +6,7 @@ import DevOps from './pages/DevOps';
 import './App.css';
 import Designs from './pages/Designs';
 import FrontEnd from './pages/FrontEnd';
+import Footer from './components/Footer';
 
 function App() {
   // Replace with your actual name and phone number
@@ -25,6 +26,7 @@ function App() {
             <Route path="/frontend" element={<FrontEnd />} />
           </Routes>
         </div>
+        <Footer />
       </div>
     </Router>
   );

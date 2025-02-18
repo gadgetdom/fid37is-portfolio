@@ -2,7 +2,7 @@ import React from "react";
 
 function Designs() {
     return (
-        <div className="page-container">
+        <div className="page-container no-select">
         <h1>UI/UX Designs</h1>
         <p>Content about other works goes here...</p>
         <p>

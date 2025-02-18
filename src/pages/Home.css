@@ -1,0 +1,46 @@
+.page-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* padding: 20px; */
+  }
+  
+  .first-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 50vh;
+    position: relative;
+  }
+  
+  .text-column {
+    transition: transform 0.3s ease-in-out;
+    text-align: center;
+    max-width: 600px;
+  }
+  
+  .text-column.shifted {
+    transform: translateX(150px);
+  }
+  
+  .image-column {
+    position: absolute;
+    left: 0;
+    width: 200px;
+    height: auto;
+  }
+  
+  .image-column img {
+    width: 100%;
+    height: auto;
+  }
+  
+  /* Styling for sections */
+  .skills-section,
+  .certifications-section {
+    text-align: center;
+    padding: 50px 0;
+    width: 100%;
+  }

@@ -10,6 +10,12 @@ body {
 * {
   box-sizing: inherit;
 }
+.no-select {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE/Edge */
+  user-select: none; 
+}
 
 .App {
   text-align: center;
@@ -64,6 +70,7 @@ body {
 .content {
   padding: 2rem;
   width: 100%;
+  min-height: 100vh;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
