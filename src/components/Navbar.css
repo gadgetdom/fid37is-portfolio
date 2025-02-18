@@ -6,23 +6,148 @@
 
 .name-first {
     background-color: #2C6B2F;
-    color: white;
-    padding: 4px 8px;
+    color: white; 
+    padding: 2px 8px;
     border-radius: 2px 0 0 2px;
-    font-weight: 400;
+    font-weight: 500;
 }
 
 .name-last {
     background-color: white;
     color: #2C6B2F;
-    border-left: none;
-    padding: 2px 8px;
-    border-radius: 0 2px 2px 0;
-    font-weight: 500;
+    padding: 0 8px;
+    font-weight: 600;
 }
 
-  /* Optional: add a hover effect */
+/* Optional: add a hover effect */
 .navbar-name a:hover .name-first,
 .navbar-name a:hover .name-last {
     opacity: 0.9;
+}
+
+.navbar-menu a.active {
+    color: #4CAF50;
+    position: relative;
+}
+
+.navbar-menu a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: #4CAF50;
+    border-radius: 1.5px;
+}
+
+/* Hamburger menu styling */
+.hamburger {
+    display: none;    
+    flex-direction: column;
+    justify-content: space-between;
+    height: 24px;
+    width: 30px;
+    cursor: pointer;
+    z-index: 20;
+}
+
+.hamburger-line {
+    width: 100%;
+    height: 2px;
+    background-color: #333;
+    transition: all 0.3s ease;
+}
+
+/* Hamburger animation */
+.hamburger-line.open:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+}
+
+.hamburger-line.open:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-line.open:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+.navbar {
+    padding: 0 1rem;
+}
+
+.hamburger {
+    display: flex;
+    position: absolute;
+    right: 1rem;
+    top: 1.5rem;
+}
+
+.navbar-menu {
+    position: fixed;
+    flex-direction: column;
+    background-color: white;
+    top: 4rem;
+    left: 0;
+    right: 0;
+    height: 0;
+    overflow: hidden;
+    transition: height 0.3s ease-in-out;
+    z-index: 10;
+}
+
+.navbar-menu.open {
+    height: auto;
+    padding: 1rem 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-menu a {
+    padding: 1rem;
+    width: 100%;
+    text-align: center;
+}
+
+.navbar-contact {
+    position: absolute;
+    right: 4rem;
+    top: 1.5rem;
+}
+}
+
+/* Additional breakpoint for mobile */
+@media (max-width: 480px) {
+.navbar-name {
+    font-size: 0.5rem;
+}
+
+.name-first, .name-last {
+    padding: 3px 6px;
+}
+
+.whatsapp-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.navbar-contact {
+    right: 3.5rem;
+}
+}
+
+/* Additional breakpoint for large screens */
+@media (min-width: 1200px) {
+.navbar {
+    padding: 0 4rem;
+}
+.navbar-menu {
+    gap: 3rem;
+}
+
+.name-first, .name-last {
+    padding: 6px 12px;
+    font-size: 1.3rem;
+}
 }

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+
 body {
   margin: 0;
   padding: 0;
@@ -15,7 +17,7 @@ body {
 }
 
 .navbar {
-  background-color: White;
+  background-color: white;
   color: #333;
   display: flex;
   justify-content: space-between;
@@ -29,22 +31,25 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 100%;
   box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .navbar-name {
-  font-weight: bold;
+  font-weight: 600;
   font-size: 1.2rem;
 }
 
 .navbar-menu {
   display: flex;
   gap: 2rem;
+  transition: all 0.3s ease;
 }
 
 .navbar a {
   color: #333;
   text-decoration: none;
   transition: color 0.3s;
+  font-weight: 500;
 }
 
 .navbar a:hover {
@@ -60,6 +65,23 @@ body {
   padding: 2rem;
   width: 100%;
   box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Ensure content displays correctly with mobile menu */
+@media (max-width: 768px) {
+  .content {
+    padding-top: 3rem;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+}
+
+p, li, span, a {
+  font-family: 'Poppins', sans-serif;
 }
 
 .page-container {
@@ -68,19 +90,9 @@ body {
   padding: 2rem;
 }
 
-/* Responsive design */
+/* Responsive page container */
 @media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    height: auto;
+  .page-container {
     padding: 1rem;
-  }
-  
-  .navbar-menu {
-    margin: 1rem 0;
-  }
-  
-  .navbar-name, .navbar-contact {
-    margin: 0.5rem 0;
   }
 }
