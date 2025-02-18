@@ -1,0 +1,28 @@
+.navbar-name a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.name-first {
+    background-color: #2C6B2F;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 2px 0 0 2px;
+    font-weight: 400;
+}
+
+.name-last {
+    background-color: white;
+    color: #2C6B2F;
+    border-left: none;
+    padding: 2px 8px;
+    border-radius: 0 2px 2px 0;
+    font-weight: 500;
+}
+
+  /* Optional: add a hover effect */
+.navbar-name a:hover .name-first,
+.navbar-name a:hover .name-last {
+    opacity: 0.9;
+}
