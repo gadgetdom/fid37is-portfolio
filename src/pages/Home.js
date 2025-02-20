@@ -3,6 +3,8 @@ import { useState } from "react";
 import "./Home.css";
 import gg from '../assets/img/gg.png';
 import CertificationSection from '../components/Certifications';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FaGithub, FaXTwitter, FaLinkedinIn } from "react-icons/fa6";
 
 const Home = () => {
     const [hovered, setHovered] = useState(false);
@@ -22,6 +24,18 @@ const Home = () => {
 
     return (
         <div className="page-container no-select">
+            <h2 className="text-3xl font-bold text-center mb-8">Connect with Me</h2>
+            <div className="icon-container">
+                <a href="https://github.com/YourUsername" target="_blank" rel="noopener noreferrer" className="icon-link">
+                <FontAwesomeIcon icon={FaGithub} />
+                </a>
+                <a href="https://x.com/YourUsername" target="_blank" rel="noopener noreferrer" className="icon-link">
+                <FontAwesomeIcon icon={FaXTwitter} />
+                </a>
+                <a href="https://linkedin.com/in/YourUsername" target="_blank" rel="noopener noreferrer" className="icon-link">
+                <FontAwesomeIcon icon={FaLinkedinIn} />
+                </a>
+            </div>
             <h1>Technical Specialist & UX/UI Designer</h1>
         {/* First Section */}
         <section
@@ -44,6 +58,7 @@ const Home = () => {
         {/* Second Section - Skills */}
         <section className="skills-section">
     <h2>Skills</h2>
+    <h5>Showcasing the Pinnacle of Achievement: My Badge of Expertise and Certifications</h5>
     <div className="skills-container">
         {skills.map((skill, index) => (
             <div key={index} className="skill-box">

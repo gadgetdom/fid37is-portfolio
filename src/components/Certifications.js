@@ -1,109 +1,81 @@
 import React, { useState } from 'react';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from './ui/card';
+import '../App.css'
 
-const CertificationSection = () => {
-  const [showPdf, setShowPdf] = useState(false);
-  const [selectedPdf, setSelectedPdf] = useState(null);
+const CertificationSec = () => {
+  const certifications = [
+    {
+      id: 1,
+      title: "Product Management",
+      issuer: "DevCareer X UK-Nigeria Tech Hub",
+      date: "2024",
+      certificateUrl: "/Promgmt-certificate.png"
+    },
+    {
+      id: 2,
+      title: "Professional Scrum Master",
+      issuer: "Scrum.org",
+      date: "2023",
+      certificateUrl: "Page-1.png"
+    },
+    {
+      id: 3,
+      title: "National Certificate in Education (Computer Science)",
+      issuer: "Federal College of Education, Obudu",
+      date: "2012",
+      certificateUrl: "/NCE Result.png"
+    },
+    {
+      id: 4,
+      title: "Azure Developer Associate",
+      issuer: "Microsoft",
+      date: "2023",
+      certificateUrl: "Page-1.png"
+    }
+  ];
 
-  const certifications = [{
-    id: 1,
-    title: "Fidelis Agba CV",
-    date: "2024",
-    description: "Curriculum Vitae",
-    pdfUrl: "/Fidelis_Agba_CV.pdf",
-    thumbnail: "/thumbnail.jpg" // Add a thumbnail image
-  }];
+  const [flippedCard, setFlippedCard] = useState(null);
 
   return (
-    <section style={{ maxWidth: '1200px', margin: '0 auto', padding: '2rem' }}>
-      <h2 style={{ textAlign: 'center', marginBottom: '2rem', fontSize: '2rem' }}>
-        Certifications
-      </h2>
-
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-        {certifications.map((cert, index) => (
-          <div key={cert.id} 
-               style={{ 
-                 display: 'flex', 
-                 flexDirection: index % 2 === 0 ? 'row' : 'row-reverse',
-                 gap: '2rem',
-                 alignItems: 'center',
-                 '@media (max-width: 768px)': {
-                   flexDirection: 'column'
-                 }
-               }}>
-            <div style={{ flex: 1 }}>
-              <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>{cert.title}</h3>
-              <p style={{ color: '#666' }}>{cert.description}</p>
-              <p style={{ color: '#888', marginTop: '0.5rem' }}>{cert.date}</p>
-            </div>
-
+    <div className="w-full max-w-6xl mx-auto p-4">
+      <h2 className="text-3xl font-bold text-center mb-8">Certifications</h2>
+      <h5>Showcasing the Pinnacle of Achievement: My Badge of Expertise and Certifications</h5>
+      <div className="grid-container">
+        {certifications.map((cert) => (
+          <div 
+            key={cert.id}
+            className="card-container h-64"
+            onMouseEnter={() => setFlippedCard(cert.id)}
+            onMouseLeave={() => setFlippedCard(null)}
+          >
             <div 
-              onClick={() => {
-                setSelectedPdf(cert.pdfUrl);
-                setShowPdf(true);
-              }}
-              style={{ 
-                cursor: 'pointer',
-                transition: 'transform 0.3s',
-                flex: 1,
-                maxWidth: '300px'
-              }}
-              onMouseEnter={e => e.target.style.transform = 'scale(1.05)'}
-              onMouseLeave={e => e.target.style.transform = 'scale(1)'}
+              className={`card ${flippedCard === cert.id ? 'flip' : ''}`}
             >
-              <img src={cert.thumbnail} alt="Certification Thumbnail" style={{ width: '100%', height: 'auto', borderRadius: '8px' }} />
+              <Card className="card-front">
+                <CardHeader>
+                  <CardTitle>{cert.title}</CardTitle>
+                  <CardDescription>{cert.issuer}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-muted-foreground">Issued: {cert.date}</p>
+                </CardContent>
+              </Card>
+              
+              <Card className="card-back">
+                <CardContent className="p-0">
+                  <img 
+                    src={cert.certificateUrl}
+                    alt={`${cert.title} Certificate`}
+                    className="w-full h-full object-cover"
+                  />
+                </CardContent>
+              </Card>
             </div>
           </div>
         ))}
       </div>
-
-      {showPdf && selectedPdf && (
-        <div style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: 'rgba(0, 0, 0, 0.8)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          zIndex: 9999
-        }}>
-          <div style={{
-            position: 'relative',
-            width: '90vw',
-            height: '90vh',
-            backgroundColor: 'white',
-            padding: '1rem'
-          }}>
-            <button 
-              onClick={() => setShowPdf(false)}
-              style={{
-                position: 'absolute',
-                top: '1rem',
-                right: '1rem',
-                background: 'none',
-                border: 'none',
-                fontSize: '1.5rem',
-                cursor: 'pointer',
-                zIndex: 10000
-              }}
-            >
-              ✕
-            </button>
-            <object
-              data={selectedPdf}
-              type="application/pdf"
-              style={{ width: '100%', height: '100%' }}
-            >
-              <p>PDF cannot be displayed</p>
-            </object>
-          </div>
-        </div>
-      )}
-    </section>
+    </div>
   );
 };
 
-export default CertificationSection;
+export default CertificationSec;

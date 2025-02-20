@@ -62,7 +62,6 @@
     padding: 15px;
     border-radius: 5px;
     text-align: center;
-    font-weight: bold;
     cursor: pointer;
     transition: background 0.3s;
   }
@@ -76,8 +75,8 @@
     bottom: 100%;
     left: 50%;
     transform: translateX(-50%);
-    background: #4CAF50;
-    color: white;
+    background: #BCF8BE;
+    color: #2C6B2F;
     padding: 10px;
     border-radius: 5px;
     white-space: nowrap;
