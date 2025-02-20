@@ -4,8 +4,7 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import DevOps from './pages/DevOps';
 import './App.css';
-import Designs from './pages/Designs';
-import FrontEnd from './pages/FrontEnd';
+import MyWorks from './pages/MyWorks';
 import Footer from './components/Footer';
 
 function App() {
@@ -22,8 +21,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/devops" element={<DevOps />} />
-            <Route path="/designs" element={<Designs />} />
-            <Route path="/frontend" element={<FrontEnd />} />
+            <Route path="/work" element={<MyWorks />} />
           </Routes>
         </div>
         <Footer />

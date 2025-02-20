@@ -1,80 +1,97 @@
-import React from 'react';
-import { useState } from "react";
-import "./Home.css";
+import React, { useState, useEffect, useMemo } from 'react';
+import './Home.css';
 import gg from '../assets/img/gg.png';
 import CertificationSection from '../components/Certifications';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { FaGithub, FaXTwitter, FaLinkedinIn } from "react-icons/fa6";
 
 const Home = () => {
     const [hovered, setHovered] = useState(false);
+    const [randomSkills, setRandomSkills] = useState([]);
+    const [bgImage, setBgImage] = useState('');
 
-    const skills = [
-        { name: "Devops", details: "Backend experience with Express.js." },
-        { name: "Scripting", details: "State management for large applications." },
-        { name: "Product Mgmt", details: "Proficient in product management and leading an agile team." },
-        { name: "Testing", details: "Manual and automated testing, Cypress" },
-        { name: "Scrum Master", details: "Skilled in Flexbox, Grid, and animations." },
-        { name: "JavaScript", details: "Proficient in ES6+, DOM manipulation, React, Vue" },
-        { name: "Git", details: "Version control and collaboration." },
-        { name: "Figma", details: "UI/UX design and prototyping." },
-        { name: "HTML/CSS", details: "Expert in semantic HTML and accessibility. CSS -  Flexbox, Grid, and animations." },
-        { name: "ICT Support", details: "Experienced in hooks, state management." },
+    const skills = useMemo(() => [
+        'Devops', 'Scripting', 'Product Mgmt', 'Testing', 'Scrum Master',
+        'JavaScript', 'Git', 'Figma', 'HTML/CSS', 'ICT Support'
+    ], []);
+
+    const services = [
+        { name: 'IT Support Consulting', description: 'Providing expert IT support and consulting services.' },
+        { name: 'Web Application Design', description: 'Designing user-friendly and responsive web applications.' },
+        { name: 'Mobile App Design', description: 'Creating intuitive and engaging mobile app designs.' },
+        { name: 'Product Go to Market Research', description: 'Conducting comprehensive market research for product launches.' },
+        { name: 'Frontend Development', description: 'Building efficient and scalable frontend applications.' },
+        { name: 'Product Management', description: 'Expertise in product management and agile methodologies.' }
     ];
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setRandomSkills(skills.sort(() => Math.random() - 0.5));
+        }, 2000);
+        return () => clearInterval(interval);
+    }, [skills]);
+
+    const handleMouseEnter = () => {
+        const bgImages = ['url(/path/to/abstract1.jpg)', 'url(/path/to/abstract2.jpg)', 'url(/path/to/abstract3.jpg)'];
+        const randomImage = bgImages[Math.floor(Math.random() * bgImages.length)];
+        setBgImage(randomImage);
+    };
 
     return (
         <div className="page-container no-select">
-            <h2 className="text-3xl font-bold text-center mb-8">Connect with Me</h2>
-            <div className="icon-container">
-                <a href="https://github.com/YourUsername" target="_blank" rel="noopener noreferrer" className="icon-link">
-                <FontAwesomeIcon icon={FaGithub} />
-                </a>
-                <a href="https://x.com/YourUsername" target="_blank" rel="noopener noreferrer" className="icon-link">
-                <FontAwesomeIcon icon={FaXTwitter} />
-                </a>
-                <a href="https://linkedin.com/in/YourUsername" target="_blank" rel="noopener noreferrer" className="icon-link">
-                <FontAwesomeIcon icon={FaLinkedinIn} />
-                </a>
-            </div>
-            <h1>Technical Specialist & UX/UI Designer</h1>
-        {/* First Section */}
-        <section
-            className="first-section"
-            onMouseEnter={() => setHovered(true)}
-            onMouseLeave={() => setHovered(false)}
-        >
-            {hovered && (
-            <div className="image-column">
-                <img src={gg} alt="Descriptive Alt" />
-            </div>
-            )}
-            <div className={`text-column ${hovered ? "shifted" : ""}`}>
-            <p>
-            I am a versatile professional with expertise in computer troubleshooting, UX research, UI/UX design, and frontend development (HTML, CSS, JavaScript). Skilled in software QA (manual & automated) and ensuring top-notch functionality. Experienced in graphic design, product management, and Scrum Master roles, offering a holistic product lifecycle understanding. Currently exploring DevOps to enhance full-stack capabilities. Passionate about creating innovative, user-centered tech solutions.
-            </p>
-            </div>
-        </section>
+            <h1>About Me</h1>
 
-        {/* Second Section - Skills */}
-        <section className="skills-section">
-    <h2>Skills</h2>
-    <h5>Showcasing the Pinnacle of Achievement: My Badge of Expertise and Certifications</h5>
-    <div className="skills-container">
-        {skills.map((skill, index) => (
-            <div key={index} className="skill-box">
-                <span>{skill.name}</span>
-                <div className="skill-banner">{skill.details}</div>
-            </div>
-        ))}
-    </div>
-</section>
+            {/* First Section */}
+            <section
+                className="first-section"
+                onMouseEnter={() => setHovered(true)}
+                onMouseLeave={() => setHovered(false)}
+            >
+                {hovered && (
+                    <div className="image-column">
+                        <img src={gg} alt="Descriptive Alt" />
+                    </div>
+                )}
+                <div className={`text-column ${hovered ? 'shifted' : ''}`}>
+                    <p>
+                        I am a versatile professional with expertise in computer troubleshooting, UX research, UI/UX design, and frontend development (HTML, CSS, JavaScript). Skilled in software QA (manual & automated) and ensuring top-notch functionality. Experienced in graphic design, product management, and Scrum Master roles, offering a holistic product lifecycle understanding. Currently exploring DevOps to enhance full-stack capabilities. Passionate about creating innovative, user-centered tech solutions.
+                    </p>
+                </div>
+            </section>
 
-        {/* Third Section - Certifications */}
-        <section className="certifications-section">
-            <CertificationSection />
-        </section>
+            {/* Second Section - Skills */}
+            <section className="skills-section">
+                <h1>Skills</h1>
+                <h5>Showcasing the Pinnacle of Achievement: My Badge of Expertise and Certifications</h5>
+                <div className="skills-container">
+                    {randomSkills.map((skill, index) => (
+                        <div key={index} className="skill-box" style={{ animation: `move ${Math.random() * 5 + 3}s infinite` }}>
+                            <span>{skill}</span>
+                        </div>
+                    ))}
+                </div>
+            </section>
 
-        
+            {/* New Section - Services */}
+            <section
+                className="services-section"
+                style={{ backgroundImage: bgImage }}
+                onMouseEnter={handleMouseEnter}
+            >
+                <h1>Services</h1>
+                <h5>Showcasing the Pinnacle of Achievement: My Badge of Expertise and Certifications</h5>
+                <div className="services-container">
+                    {services.map((service, index) => (
+                        <div key={index} className="service-card">
+                            <h3>{service.name}</h3>
+                            <p>{service.description}</p>
+                        </div>
+                    ))}
+                </div>
+            </section>
+
+            {/* Third Section - Certifications */}
+            <section className="certifications-section">
+                <CertificationSection />
+            </section>
         </div>
     );
 };

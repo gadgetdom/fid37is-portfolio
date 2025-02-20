@@ -5,6 +5,14 @@
     gap: 10;
     padding: 20px;
   } */
+  .image-column img {
+    transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.image-column img:hover {
+    filter: brightness(1.2) saturate(1.1);
+    transform: scale(1.05);
+}
   
   .first-section {
     display: flex;
@@ -51,7 +59,7 @@
     grid-template-columns: repeat(5, 1fr); /* 5 columns per row */
     gap: 20px;
     justify-content: center;
-    padding: 20px;
+    padding: 50px 0;
     max-width: 900px;
     margin: auto;
   }
@@ -64,26 +72,6 @@
     text-align: center;
     cursor: pointer;
     transition: background 0.3s;
-  }
-  
-  .skill-box:hover {
-    background: #ddd;
-  }
-  
-  .skill-banner {
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #BCF8BE;
-    color: #2C6B2F;
-    padding: 10px;
-    border-radius: 5px;
-    white-space: nowrap;
-    font-size: 14px;
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 0.3s;
   }
   
   .skill-box:hover .skill-banner {
@@ -149,3 +137,64 @@
     padding: 50px 0;
     width: 100%;
   }
+
+  @keyframes move {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(50px, -50px); }
+    50% { transform: translate(-50px, -50px); }
+    75% { transform: translate(-50px, 50px); }
+    100% { transform: translate(0, 0); }
+}
+
+.skill-box {
+    animation: move 5s infinite;
+}
+
+.services-section {
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.services-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 10px;
+}
+
+.service-card {
+    background-color: #FFF;
+    border: 1px solid #e7e6e6;
+    border-radius: 8px;
+    padding: 16px;
+    margin-left: -100px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, margin-left 0.3s ease;
+    z-index: 2;
+}
+
+.service-card:hover {
+    transform: translateX(80px);
+    background-color:  #4CAF50;
+    color: white;
+    margin-left: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.services-section:hover .service-card:not(:hover) {
+    transform: translateX(180px);
+    margin-left: -90px;
+    z-index: 1;
+}
+
+@keyframes move {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(50px, -50px); }
+    50% { transform: translate(-50px, -50px); }
+    75% { transform: translate(-50px, 50px); }
+    100% { transform: translate(0, 0); }
+}

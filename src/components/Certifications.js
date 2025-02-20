@@ -13,10 +13,10 @@ const CertificationSec = () => {
     },
     {
       id: 2,
-      title: "Professional Scrum Master",
-      issuer: "Scrum.org",
+      title: "Product Management 2",
+      issuer: "Great Learning",
       date: "2023",
-      certificateUrl: "Page-1.png"
+      certificateUrl: "/prmgm-cert.png"
     },
     {
       id: 3,
@@ -38,7 +38,7 @@ const CertificationSec = () => {
 
   return (
     <div className="w-full max-w-6xl mx-auto p-4">
-      <h2 className="text-3xl font-bold text-center mb-8">Certifications</h2>
+      <h1 className="text-3xl font-bold text-center mb-8">Certifications</h1>
       <h5>Showcasing the Pinnacle of Achievement: My Badge of Expertise and Certifications</h5>
       <div className="grid-container">
         {certifications.map((cert) => (
