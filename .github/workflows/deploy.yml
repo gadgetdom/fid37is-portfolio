@@ -2,7 +2,7 @@ name: Deploy React App to GitHub Pages
 
 on:
   push:
-    branches: [ "main" ] # or your default branch
+    branches: [ "portfolio-FE" ] # or your default branch
   workflow_dispatch:
 
 permissions:
@@ -33,7 +33,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          path: './build'
-          
+            path: './build'
+        
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v2
