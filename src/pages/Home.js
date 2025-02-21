@@ -17,7 +17,8 @@ const Home = () => {
         { name: 'IT Support Consulting', description: 'Providing expert IT support and consulting services.' },
         { name: 'Web Application Design', description: 'Designing user-friendly and responsive web applications.' },
         { name: 'Mobile App Design', description: 'Creating intuitive and engaging mobile app designs.' },
-        { name: 'Product Go to Market Research', description: 'Conducting comprehensive market research for product launches.' },
+        { name: 'SoftWare Testing', description: 'Ensuring your software is robust and reliable through meticulous testing and analysis' },
+        { name: 'QA Consulting', description: 'Providing expert consultation to refine your quality assurance processes and deliver flawless products.' },
         { name: 'Frontend Development', description: 'Building efficient and scalable frontend applications.' },
         { name: 'Product Management', description: 'Expertise in product management and agile methodologies.' }
     ];
@@ -60,7 +61,7 @@ const Home = () => {
             {/* Second Section - Skills */}
             <section className="skills-section">
                 <h1>Skills</h1>
-                <h5>Showcasing the Pinnacle of Achievement: My Badge of Expertise and Certifications</h5>
+                <h5>My Range of Skills and Competencies</h5>
                 <div className="skills-container">
                     {randomSkills.map((skill, index) => (
                         <div key={index} className="skill-box" style={{ animation: `move ${Math.random() * 5 + 3}s infinite` }}>
@@ -77,7 +78,7 @@ const Home = () => {
                 onMouseEnter={handleMouseEnter}
             >
                 <h1>Services</h1>
-                <h5>Showcasing the Pinnacle of Achievement: My Badge of Expertise and Certifications</h5>
+                <h5>Empowering Your Vision with my Skills</h5>
                 <div className="services-container">
                     {services.map((service, index) => (
                         <div key={index} className="service-card">

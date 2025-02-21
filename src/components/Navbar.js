@@ -42,7 +42,7 @@ function Navbar({ name, phoneNumber }) {
                 </Link>
                 <Link
                     to="/work"
-                    className={isActive("/myworks")}
+                    className={isActive("/work")}
                     onClick={() => setMenuOpen(false)}
                 >
                     MyWorks

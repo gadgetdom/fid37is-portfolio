@@ -20,17 +20,17 @@ const CertificationSec = () => {
     },
     {
       id: 3,
-      title: "National Certificate in Education (Computer Science)",
-      issuer: "Federal College of Education, Obudu",
+      title: "Azure Developer Associate",
+      issuer: "Will be added soon",
       date: "2012",
-      certificateUrl: "/NCE Result.png"
+      certificateUrl: "/prmgm-cert.png"
     },
     {
       id: 4,
-      title: "Azure Developer Associate",
-      issuer: "Microsoft",
-      date: "2023",
-      certificateUrl: "Page-1.png"
+      title: "Software Testing",
+      issuer: "Udemy",
+      date: "2022",
+      certificateUrl: "/udemy-cert.png"
     }
   ];
 

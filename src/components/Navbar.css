@@ -78,7 +78,11 @@ a.icon-link {
 /* Media queries for responsive design */
 @media (max-width: 768px) {
 .navbar {
-    padding: 0 1rem;
+    padding: 1rem;
+}
+
+nav.navbar {
+    height: 6rem;
 }
 
 .hamburger {
@@ -115,8 +119,8 @@ a.icon-link {
 
 .navbar-contact {
     position: absolute;
-    right: 4rem;
-    top: 1.5rem;
+    margin-right: 3rem;
+    top: 3rem;
 }
 }
 
