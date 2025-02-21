@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/fid37is-portfolio/static/css/main.57616bf9.css",
+    "main.js": "/fid37is-portfolio/static/js/main.3f3a8c5f.js",
+    "static/js/488.6f8c24cf.chunk.js": "/fid37is-portfolio/static/js/488.6f8c24cf.chunk.js",
+    "static/media/gg.png": "/fid37is-portfolio/static/media/gg.fe4a61a37e535ddc7b61.png",
+    "index.html": "/fid37is-portfolio/index.html",
+    "main.57616bf9.css.map": "/fid37is-portfolio/static/css/main.57616bf9.css.map",
+    "main.3f3a8c5f.js.map": "/fid37is-portfolio/static/js/main.3f3a8c5f.js.map",
+    "488.6f8c24cf.chunk.js.map": "/fid37is-portfolio/static/js/488.6f8c24cf.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.57616bf9.css",
+    "static/js/main.3f3a8c5f.js"
+  ]
+}
