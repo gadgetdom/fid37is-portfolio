@@ -11,7 +11,16 @@ jobs:
       
       - name: Build
         run: |
-          yarn build
+            yarn install --frozen-lockfile
+            yarn lint
+            yarn test
+            yarn build
+            yarn generate-sitemap
+            yarn compress-images
+            if [ ! -d "dist" ]; then
+              echo "Error: Build output directory 'dist' not found"
+              exit 1
+            fi
           
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
