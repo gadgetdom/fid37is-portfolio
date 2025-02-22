@@ -1,7 +1,7 @@
 name: Build and Deploy
 on:
   push:
-    branches: [ main ]  # or your default branch
+    branches: [ portfolio-FE ] 
 
 jobs:
   build-and-deploy:
