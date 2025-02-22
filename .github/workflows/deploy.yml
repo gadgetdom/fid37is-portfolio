@@ -2,7 +2,7 @@ name: Deploy React App to GitHub Pages
 
 on:
   push:
-    branches: [ "portfolio-FE" ] # or your default branch
+    branches: [ "portfolio-FE" ]
   workflow_dispatch:
 
 permissions:
@@ -19,7 +19,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20' # or your Node.js version
+          node-version: '20' 
           
       - name: Install Dependencies
         run: yarn install
@@ -33,9 +33,15 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
+          name: build-artifact
           path: './build'
         
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v2
-
         
+      - name: Clean Install Dependencies
+        run: |
+          rm -rf node_modules yarn.lock
+          yarn cache clean
+          yarn install --frozen-lockfile
+
