@@ -1,7 +1,7 @@
 name: Build and Deploy
 on:
   push:
-    branches: [ portfolio-FE ] 
+    branches: [ main ]
 
 jobs:
   build-and-deploy:
@@ -12,26 +12,27 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4    # Updated to v4
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4  # Updated to v4
         with:
-          node-version: '18'  
-          cache: 'yarn'       
+          node-version: '18'
+          cache: 'yarn'
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
       - name: Build
-        run: yarn build
+        run: |
+          yarn build
+          echo "yourdomain.com" > build/CNAME
 
+      # Updated to use v4 of upload-artifact
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v3  # Note: using v3 for pages-artifact
         with:
-          path: './dist'  
+          path: './build'
 
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v3
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+        uses: actions/deploy-pages@v3  # Updated to v3
