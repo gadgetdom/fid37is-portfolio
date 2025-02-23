@@ -16,7 +16,7 @@ const CertificationSec = () => {
       title: "Product Management 2",
       issuer: "Great Learning",
       date: "2023",
-      certificateUrl: "/prmgm-cert.png"
+      certificateUrl: "/public/prmgm-cert.png"
     },
     {
       id: 3,
@@ -37,10 +37,10 @@ const CertificationSec = () => {
   const [flippedCard, setFlippedCard] = useState(null);
 
   return (
-    <div className="w-full max-w-6xl mx-auto p-4">
+    <div className="w-full max-w-6xl mx-auto p-4 flex flex-col items-center">
       <h1 className="text-3xl font-bold text-center mb-8">Certifications</h1>
       <h5>Showcasing the Pinnacle of Achievement: My Badge of Expertise and Certifications</h5>
-      <div className="grid-container">
+      <div className="grid-container items-center">
         {certifications.map((cert) => (
           <div 
             key={cert.id}

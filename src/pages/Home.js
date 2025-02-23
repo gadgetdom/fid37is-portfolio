@@ -38,8 +38,7 @@ const Home = () => {
 
     return (
         <div className="page-container no-select">
-            <h1>About Me</h1>
-
+            <h1>About Fidelis</h1>
             {/* First Section */}
             <section
                 className="first-section"
@@ -89,7 +88,6 @@ const Home = () => {
                 </div>
             </section>
 
-            {/* Third Section - Certifications */}
             <section className="certifications-section">
                 <CertificationSection />
             </section>
