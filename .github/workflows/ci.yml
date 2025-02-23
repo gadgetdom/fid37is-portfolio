@@ -1,0 +1,54 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches: [ portfolio-FE ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'yarn'
+
+      - name: Check directory structure before build
+        run: |
+          echo "Current directory contents:"
+          ls -la
+          echo "Package.json contents:"
+          cat package.json
+
+      - name: Install dependencies
+        run: |
+          yarn install --frozen-lockfile
+          echo "Checking installed packages:"
+          yarn list
+
+      - name: Debug Available Scripts
+        run: yarn run
+
+      - name: Build the project
+        run: yarn run build
+
+      - name: Verify build output
+        run: |
+          echo "Checking build directory..."
+          ls -la build || echo "No build directory found"
+
+      - name: Upload artifact for GitHub Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: build
+
+      - name: Deploy to GitHub Pages
+        run: yarn run deploy
