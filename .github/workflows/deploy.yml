@@ -12,27 +12,64 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4    # Updated to v4
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # This ensures we have the full git history
+
+      - name: Verify repository content
+        run: |
+          echo "Current directory contents:"
+          ls -la
+          echo "Branch information:"
+          git branch --show-current
+          git rev-parse HEAD
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4  # Updated to v4
+        uses: actions/setup-node@v4
         with:
           node-version: '18'
           cache: 'yarn'
 
+      - name: Verify Node.js and Yarn installation
+        run: |
+          echo "Node version: $(node -v)"
+          echo "Yarn version: $(yarn -v)"
+
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: |
+          echo "Installing dependencies..."
+          yarn install --frozen-lockfile
+          echo "Dependencies installed successfully"
+          echo "node_modules contents:"
+          ls -la node_modules | head -n 5
 
       - name: Build
         run: |
-          yarn build
-          echo "yourdomain.com" > build/CNAME
+          echo "Starting build process..."
+          yarn build || {
+            echo "Build failed. Checking for common issues:"
+            echo "Package.json contents:"
+            cat package.json
+            echo "Available scripts:"
+            yarn run
+            exit 1
+          }
 
-      # Updated to use v4 of upload-artifact
+      - name: Verify build output
+        run: |
+          echo "Checking build output..."
+          if [ -d "build" ]; then
+            echo "Build directory exists"
+            ls -la build
+          else
+            echo "Build directory not found"
+            exit 1
+          fi
+
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3  # Note: using v3 for pages-artifact
+        uses: actions/upload-pages-artifact@v3
         with:
           path: './build'
 
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v3  # Updated to v3
+        uses: actions/deploy-pages@v3
